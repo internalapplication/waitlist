@@ -1,13 +1,22 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { getAppUrl } from "@/lib/site";
+import { Providers } from "./providers";
 import "./globals.css";
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
+
 export const metadata: Metadata = {
+  metadataBase: getAppUrl(),
   title: "Waitlist",
   description: "Turn your idea into a waitlist page.",
   openGraph: {
     title: 'Waitlist',
     description: 'Turn your idea into a waitlist page.',
-    url: 'https://waitlist.internalapplication.com',
+    url: getAppUrl().origin,
     siteName: 'Waitlist',
     images: [
       {
@@ -29,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

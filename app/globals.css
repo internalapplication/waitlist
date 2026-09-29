@@ -1,15 +1,13 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -24,4 +22,24 @@ body {
 
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes waitlist-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+.waitlist-progress-bar {
+  animation: waitlist-slide 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waitlist-progress-bar {
+    animation: none;
+    transform: translateX(100%);
+  }
 }
